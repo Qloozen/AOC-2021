@@ -1,74 +1,61 @@
 package Solutions;
+import java.util.List;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
+import Utilities.AOC;
 
 
-public class Day2 {
-    public BufferedReader reader;
-    public ArrayList<String> input;
-    public int horizontal = 0;
-    public int depth = 0;
-    public int aim = 0;
+public class Day2 extends AOC{
 
     public Day2() {
-        input = new ArrayList<>();
+        super(2);
     }
 
+    @Override
+    public void puzzleA(List<String> input) {
+        int horizontal = 0;
+        int depth = 0;
 
-    public void PuzzleA() {
-        try {
-            reader = new BufferedReader(new FileReader("./Inputs/input2.txt"));
-            String line;
-            while((line = reader.readLine()) != null) {
-                String[] parts = line.split(" ");
-                int amount = Integer.valueOf(parts[1]);
-                switch(parts[0]) {
-                    case "forward":
-                        horizontal += amount; 
-                        break;
-                    case "up":
-                        depth -= amount; 
-                        break;
-                    case "down":
-                        depth += amount; 
+        for (String line : input) {
+            String[] parts = line.split(" ");
+            int amount = Integer.valueOf(parts[1]);
+            switch(parts[0]) {
+                case "forward":
+                    horizontal += amount; 
                     break;
-                }
-                input.add(line);
+                case "up":
+                    depth -= amount; 
+                    break;
+                case "down":
+                    depth += amount; 
+                break;
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
-        
         System.out.println(String.format("Horizontal: %d, Depth: %d. Multiply %d", horizontal, depth, (horizontal * depth)));
     }
 
-    public void PuzzleB() {
-        try {
-            reader = new BufferedReader(new FileReader("./Inputs/input2.txt"));
-            String line;
-            while((line = reader.readLine()) != null) {
-                String[] parts = line.split(" ");
-                int amount = Integer.valueOf(parts[1]);
-                switch(parts[0]) {
-                    case "forward":
-                        horizontal += amount;
-                        depth += amount * aim;
-                        break;
-                    case "up":
-                        aim -= amount; 
-                        break;
-                    case "down":
-                        aim += amount; 
-                    break;
-                }
-                input.add(line);
+    @Override
+    public void puzzleB(List<String> input) {
+        int horizontal = 0;
+        int depth = 0;
+        int aim = 0;
+       for (String line : input) {
+        String[] parts = line.split(" ");
+        int amount = Integer.valueOf(parts[1]);
+        switch(parts[0]) {
+            case "forward":
+                horizontal += amount;
+                depth += amount * aim;
+                break;
+            case "up":
+                aim -= amount; 
+                break;
+            case "down":
+                aim += amount; 
+            break;
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        System.out.println(String.format("Horizontal: %d, Depth: %d. Multiply %d", horizontal, depth, (horizontal * depth)));
+       }
+
+       System.out.println(String.format("Horizontal: %d, Depth: %d. Multiply %d", horizontal, depth, (horizontal * depth)));
+
     }
 }

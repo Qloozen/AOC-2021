@@ -1,19 +1,22 @@
 package Solutions;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import Utilities.IntegerReader;
+import Utilities.AOC;
 
-public class Day1{
-    static IntegerReader reader = new IntegerReader("./Inputs/input1.txt");
-    static ArrayList<Integer> input = reader.input;
+public class Day1 extends AOC{
+    public Day1() {
+        super(1);
+    }
 
-    public static void puzzleA() {
+    @Override
+    public void puzzleA(List<String> input) {
+        List<Integer> in = inputToInt(input);
         int increased = 0;
 
-        for (int i = 1; i < input.size(); i++) {
-            int current = input.get(i);
-            if(current > input.get(i - 1)) {
+        for (int i = 1; i < in.size(); i++) {
+            int current = in.get(i);
+            if(current > in.get(i - 1)) {
                 increased ++;
             }
         }
@@ -21,12 +24,14 @@ public class Day1{
         System.out.println(increased);
     }
 
-    public static void puzzleB() {
+    @Override
+    public void puzzleB(List<String> input) {
         int increased = 0;
+        List<Integer> in = inputToInt(input);
 
-        for (int i = 1; i+2 < input.size(); i++) {
-            int previous = input.get(i - 1) + input.get(i) + input.get(i + 1);
-            int sum = input.get(i) + input.get(i + 1) + input.get(i + 2);
+        for (int i = 1; i+2 < in.size(); i++) {
+            int previous = in.get(i - 1) + in.get(i) + in.get(i + 1);
+            int sum = in.get(i) + in.get(i + 1) + in.get(i + 2);
             if(sum > previous) {
                 increased ++;
             }
