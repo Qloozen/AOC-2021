@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class StringReader {
     public BufferedReader reader;
-    public ArrayList<Integer> input;
+    public ArrayList<String> input;
 
     public StringReader(String inputPath) {
         input = new ArrayList<>();
@@ -22,8 +22,7 @@ public class StringReader {
     private void loadData() throws Exception {
         String line;
         while((line = reader.readLine()) != null) {
-            int lineInt = Integer.valueOf(line);
-            input.add(lineInt);
+            input.add(line);
         }
     }
 }
